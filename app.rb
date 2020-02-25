@@ -3,13 +3,14 @@ require 'net/http'
 require 'uri'
 require 'openssl'
 require "sinatra/json"
+OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class Application < Sinatra::Base
 
  
 
   get '/' do
-    uri = URI("#{params[:tableau_host]}/trusted")
+    uri = URI("#{params[:server]}/trusted")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
     request["Origin"] = "10.55.97.212"
