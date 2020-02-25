@@ -17,6 +17,7 @@ class Application < Sinatra::Base
         "server" => params[:server],
         "target_site" => params[:site_name],
         "username" => params[:user_name],
+        "client_ip" => '3.136.78.188'
       )
 
     req_options = {
