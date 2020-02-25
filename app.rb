@@ -3,7 +3,6 @@ require 'net/http'
 require 'uri'
 require 'openssl'
 require "sinatra/json"
-OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class Application < Sinatra::Base
 
