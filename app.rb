@@ -9,7 +9,7 @@ class Application < Sinatra::Base
  
 
   get '/' do
-    uri = URI(params[:server])
+    uri = URI("#{params[:server]}/trusted")
     request = Net::HTTP::Post.new(uri)
     request.content_type = "application/x-www-form-urlencoded"
    
