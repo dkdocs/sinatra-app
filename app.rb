@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'net/http'
 require 'openssl'
+require "sinatra/json"
+
 OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class Application < Sinatra::Base
@@ -24,6 +26,7 @@ class Application < Sinatra::Base
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
+    json data: response.body, status: response.code
   end
 
 end
