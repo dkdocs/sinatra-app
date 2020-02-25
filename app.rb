@@ -7,8 +7,6 @@ OpenSSL::SSL::VERIFY_PEER = OpenSSL::SSL::VERIFY_NONE
 
 class Application < Sinatra::Base
 
- 
-
   get '/' do
     uri = URI("#{params[:server]}/trusted")
     request = Net::HTTP::Post.new(uri)
@@ -30,7 +28,7 @@ class Application < Sinatra::Base
     response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
       http.request(request)
     end
-    json data: response.body, status: response.code
+    response.body
   end
 
 end
